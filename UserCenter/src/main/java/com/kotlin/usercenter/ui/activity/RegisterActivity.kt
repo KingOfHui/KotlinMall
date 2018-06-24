@@ -9,9 +9,6 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
-    override fun onRegisterResult(result: Boolean) {
-        toast("注册成功")
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +18,11 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
         registerBtn.setOnClickListener {
 //            startActivity(intentFor<LoginActivity>("id" to 5))
 //            startActivity<LoginActivity>("id" to 10)
-            mPresenter.register("", "")
+            mPresenter.register("", "","")
 
         }
+    }
+    override fun onRegisterResult(result: Boolean) {
+        toast("注册成功")
     }
 }
