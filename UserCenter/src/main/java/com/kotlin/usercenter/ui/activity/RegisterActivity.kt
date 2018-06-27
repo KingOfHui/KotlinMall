@@ -18,7 +18,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
         registerBtn.setOnClickListener {
 //            startActivity(intentFor<LoginActivity>("id" to 5))
 //            startActivity<LoginActivity>("id" to 10)
-            mPresenter.register("", "","")
+            mPresenter.register(mobileEt.text.toString(), verifyCodeEt.text.toString(),pwdEt.text.toString())
 
         }
     }

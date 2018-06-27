@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/mobileEt"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:hint="请输入手机号码"
@@ -23,10 +24,12 @@
 
     </LinearLayout>
     <EditText
+        android:id="@+id/verifyCodeEt"
         android:layout_width="match_parent"
         android:hint="请输入验证码"
         android:layout_height="wrap_content" />
     <EditText
+        android:id="@+id/pwdEt"
         android:layout_width="match_parent"
         android:hint="请输入密码"
         android:layout_height="wrap_content" />
