@@ -1,6 +1,7 @@
 package com.kotlin.usercenter.ui.activity
 
 import android.os.Bundle
+import com.kotlin.base.common.Appmanager
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.usercenter.R
@@ -13,6 +14,8 @@ import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
+    private var pressTime:Long=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -24,9 +27,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //            startActivity<LoginActivity>("id" to 10)
             mPresenter.register(mobileEt.text.toString(), verifyCodeEt.text.toString(), pwdEt.text.toString())
         }
-//        dynamicCodeBtn.setOnClickListener {
-//            mPresenter.register2("", "", "")
-//        }
         dynamicCodeBtn.onClick { mPresenter.register2("", "", "") }
     }
 
@@ -38,5 +38,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
     override fun onRegisterResult(result: String) {
             toast(result)
+    }
+
+    override fun onBackPressed() {
+        val time=System.currentTimeMillis()
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime=time
+        }else{
+            Appmanager.instance.exitApp(this)
+        }
     }
 }
