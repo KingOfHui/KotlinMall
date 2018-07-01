@@ -24,7 +24,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                     override fun onNext(t: Boolean) {
                         mView.onRegisterResult(t)
                     }
-                })
+                },lifecycleProvider)
 
     }
     fun register2(mobile: String, verifyCode: String, pwd: String) {
@@ -34,7 +34,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                     override fun onNext(t: Boolean) {
                         mView.onRegisterResult(t)
                     }
-                })
+                },lifecycleProvider)
 
     }
 }

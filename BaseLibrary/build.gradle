@@ -77,5 +77,10 @@ dependencies {
     //Dagger2
     api "com.google.dagger:dagger:${dagger_version}"
     kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+    //RxLifecycle
+//    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:${rx2_lifecycle_version}"
+//    api "com.trello.rxlifecycle2:rxlifecycle-components:${rx2_lifecycle_version}"
+    api "com.trello:rxlifecycle-kotlin:${rx_lifecycle_version}"
+    api "com.trello:rxlifecycle-components:${rx_lifecycle_version}"
 }
 
