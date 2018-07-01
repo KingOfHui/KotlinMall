@@ -5,7 +5,7 @@ import com.kotlin.usercenter.service.UserService
 import rx.Observable
 import javax.inject.Inject
 
-class UserServiceImpl @Inject constructor() : UserService {
+class UserServiceImpl2 @Inject constructor() : UserService {
     @Inject
     lateinit var repository: UserRepository
 
@@ -16,10 +16,10 @@ class UserServiceImpl @Inject constructor() : UserService {
 //                if (t!!.status != 0) {
 //                    return Observable.error(BaseException(t.status, t.message))
 //                }
-//                return Observable.just(true)
+//                return Observable.just(false)
 //            }
 //
 //        })
-        return Observable.just(true)
+                return Observable.just(false)
     }
 }
