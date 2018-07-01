@@ -14,27 +14,40 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
     @field:[Named("service1")]
     lateinit var userService:UserService
 
-    @Inject
-    @field:[Named("service2")]
-    lateinit var userService2:UserService
+//    @Inject
+//    @field:[Named("service2")]
+//    lateinit var userService2:UserService
     fun register(mobile: String, verifyCode: String, pwd: String) {
         //业务逻辑
         userService.register(mobile, verifyCode, pwd)
                 .execute(object : BaseSubscriber<Boolean>(){
                     override fun onNext(t: Boolean) {
-                        mView.onRegisterResult(t)
+                        mView.onRegisterResult(if(t)"注册成功" else "注册失败")
                     }
                 },lifecycleProvider)
 
     }
+
+
     fun register2(mobile: String, verifyCode: String, pwd: String) {
         //业务逻辑
-        userService2.register(mobile, verifyCode, pwd)
-                .execute(object : BaseSubscriber<Boolean>(){
-                    override fun onNext(t: Boolean) {
-                        mView.onRegisterResult(t)
+        userService.register2(mobile, verifyCode, pwd)
+                .execute(object : BaseSubscriber<String>(){
+                    override fun onNext(result: String) {
+                        mView.onRegisterResult(result)
                     }
                 },lifecycleProvider)
 
     }
+
+//    fun register2(mobile: String, verifyCode: String, pwd: String) {
+//        //业务逻辑
+//        userService2.register(mobile, verifyCode, pwd)
+//                .execute(object : BaseSubscriber<String>(){
+//                    override fun onNext(result: String) {
+//                        mView.onRegisterResult(result)
+//                    }
+//                },lifecycleProvider)
+//
+//    }
 }

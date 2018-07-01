@@ -1,6 +1,7 @@
 package com.kotlin.usercenter.ui.activity
 
 import android.os.Bundle
+import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.usercenter.R
 import com.kotlin.usercenter.injection.component.DaggerUserComponent
@@ -23,22 +24,19 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //            startActivity<LoginActivity>("id" to 10)
             mPresenter.register(mobileEt.text.toString(), verifyCodeEt.text.toString(), pwdEt.text.toString())
         }
-        dynamicCodeBtn.setOnClickListener {
-            mPresenter.register2("", "", "")
-        }
+//        dynamicCodeBtn.setOnClickListener {
+//            mPresenter.register2("", "", "")
+//        }
+        dynamicCodeBtn.onClick { mPresenter.register2("", "", "") }
     }
 
-    private fun initInjection() {
+    override fun initInjection() {
 //        DaggerUserComponent.builder().build().inject(this)
         DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
         mPresenter.mView = this
     }
 
-    override fun onRegisterResult(result: Boolean) {
-        if (result) {
-            toast("注册成功")
-        } else {
-            toast("注册失败")
-        }
+    override fun onRegisterResult(result: String) {
+            toast(result)
     }
 }
