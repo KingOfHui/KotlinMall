@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.kotlin.base.common.Appmanager
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.widgets.VerifyButton
 import com.kotlin.usercenter.R
 import com.kotlin.usercenter.injection.component.DaggerUserComponent
 import com.kotlin.usercenter.injection.module.UserModule
@@ -27,7 +28,16 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //            startActivity<LoginActivity>("id" to 10)
             mPresenter.register(mobileEt.text.toString(), verifyCodeEt.text.toString(), pwdEt.text.toString())
         }
-        dynamicCodeBtn.onClick { mPresenter.register2("", "", "") }
+        dynamicCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
+            override fun onClick() {
+                toast("获取验证码")
+            }
+
+        })
+        dynamicCodeBtn.onClick {
+            dynamicCodeBtn.requestSendVerifyNumber()
+            mPresenter.register2("", "", "")
+        }
     }
 
     override fun initInjection() {
