@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
 
@@ -49,7 +50,6 @@ dependencies {
 //    api "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
 //    api "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
 
-
     //RxKotlin和RxAndroid
     api "io.reactivex:rxkotlin:$rx_kotlin_version"
     api "io.reactivex:rxandroid:$rx_android_version"
@@ -63,10 +63,14 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
     api "com.squareup.retrofit2:converter-scalars:${retrofit_version}"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
-    api ("com.squareup.retrofit2:converter-simplexml:${retrofit_version}"){
+    api("com.squareup.retrofit2:converter-simplexml:${retrofit_version}") {
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
     }
+
+    api "com.google.dagger:dagger:${dagger_version}"
+    kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+
 }
 

@@ -38,7 +38,7 @@ class RetrofitFactory private constructor() {
                 .build()
     }
 
-    private fun initClient(): OkHttpClient? {
+    private fun initClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addInterceptor(initLogInterceptor())
