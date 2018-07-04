@@ -51,5 +51,6 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
         println(activityComponent.toString())
         println(activityComponent.toString())
         println(activityComponent.toString())
+        println(activityComponent.toString())
     }
 }
