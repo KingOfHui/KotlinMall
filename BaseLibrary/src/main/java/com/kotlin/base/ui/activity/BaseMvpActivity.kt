@@ -48,5 +48,6 @@ abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView 
                 .activityModule(ActivityModule(this))
                 .lifecycleProviderModule(LifecycleProviderModule(this))
                 .build()
+        println(activityComponent.toString())
     }
 }
