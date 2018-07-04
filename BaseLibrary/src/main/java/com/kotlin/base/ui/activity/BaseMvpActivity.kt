@@ -34,5 +34,6 @@ open class BaseMvpActivity<T:BasePresenter<*>>: BaseActivity(),BaseView {
                 .appComponent((application as BaseApplication).appComponent)
                 .activityModule(ActivityModule(this))
                 .build()
+        println(activityComponent.toString())
     }
 }
