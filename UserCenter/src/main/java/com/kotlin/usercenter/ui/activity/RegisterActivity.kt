@@ -2,6 +2,7 @@ package com.kotlin.usercenter.ui.activity
 
 import android.os.Bundle
 import com.kotlin.base.common.Appmanager
+import com.kotlin.base.ext.enable
 import com.kotlin.base.ext.onClick
 import com.kotlin.base.ui.activity.BaseMvpActivity
 import com.kotlin.base.widgets.VerifyButton
@@ -15,7 +16,7 @@ import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 
-    private var pressTime:Long=0
+    private var pressTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,20 +24,30 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter=RegisterPresenter()
         initInjection()
 
-        registerBtn.setOnClickListener {
-            //            startActivity(intentFor<LoginActivity>("id" to 5))
-//            startActivity<LoginActivity>("id" to 10)
-            mPresenter.register(mobileEt.text.toString(), verifyCodeEt.text.toString(), pwdEt.text.toString())
-        }
-        dynamicCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
+        initView()
+    }
+
+    private fun initView() {
+        mRegisterBtn.enable(mMobileEt,{isBtnEnable()})
+        mRegisterBtn.enable(mVerifyCodeEt,{isBtnEnable()})
+        mRegisterBtn.enable(mPwdEt,{isBtnEnable()})
+        mRegisterBtn.enable(mPwdConfirmEt,{isBtnEnable()})
+
+        mVerifyCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
             override fun onClick() {
                 toast("获取验证码")
             }
 
         })
-        dynamicCodeBtn.onClick {
-            dynamicCodeBtn.requestSendVerifyNumber()
-            mPresenter.register2("", "", "")
+        mVerifyCodeBtn.onClick {
+            mVerifyCodeBtn.requestSendVerifyNumber()
+            toast("发送验证码成功")
+        }
+        mRegisterBtn.setOnClickListener {
+            //            startActivity(intentFor<LoginActivity>("id" to 5))
+//            startActivity<LoginActivity>("id" to 10)
+
+            mPresenter.register(mMobileEt.text.toString(), mVerifyCodeEt.text.toString(), mPwdEt.text.toString())
         }
     }
 
@@ -47,15 +58,22 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
     }
 
     override fun onRegisterResult(result: String) {
-            toast(result)
+        toast(result)
+    }
+
+    fun isBtnEnable(): Boolean {
+        return mMobileEt.text.isNullOrEmpty().not() &&
+                mVerifyCodeEt.text.isNullOrEmpty().not() &&
+                mPwdEt.text.isNullOrEmpty().not() &&
+                mPwdConfirmEt.text.isNullOrEmpty().not()
     }
 
     override fun onBackPressed() {
-        val time=System.currentTimeMillis()
+        val time = System.currentTimeMillis()
         if (time - pressTime > 2000) {
             toast("再按一次退出程序")
-            pressTime=time
-        }else{
+            pressTime = time
+        } else {
             Appmanager.instance.exitApp(this)
         }
     }

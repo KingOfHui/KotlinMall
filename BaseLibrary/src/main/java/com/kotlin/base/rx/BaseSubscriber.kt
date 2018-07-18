@@ -13,5 +13,10 @@ open class BaseSubscriber<T>(val  mBaseView:BaseView):Subscriber<T>() {
 
     override fun onError(e: Throwable?) {
         mBaseView.hideLoading()
+//        if (e is BaseException) {
+        if (e != null) {
+            mBaseView.onError(e.message!!)
+        }
+//        }
     }
 }

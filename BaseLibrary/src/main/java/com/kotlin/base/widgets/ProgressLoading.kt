@@ -30,7 +30,7 @@ class ProgressLoading private constructor(context: Context, themeResId: Int) : D
     }
 
     fun showLoading() {
-        super.show()
+        mDialog.show()
         animDrawable?.start()
     }
 
