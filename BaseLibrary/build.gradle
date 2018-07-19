@@ -99,5 +99,11 @@ dependencies {
     //Glide
     api "com.github.bumptech.glide:glide:${glide_version}"
     annotationProcessor "com.github.bumptech.glide:compiler:${glide_version}"
+    //Circle ImageView
+    api "de.hdodenhof:circleimageview:${circle_imageView_version}"
+    //Take Photo
+    api "com.jph.takephoto:takephoto_library:${take_photo_version}"
+    //Alert View
+    api "com.bigkoo:alertview:${alert_view_version}"
 }
 
