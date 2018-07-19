@@ -105,5 +105,8 @@ dependencies {
     api "com.jph.takephoto:takephoto_library:${take_photo_version}"
     //Alert View
     api "com.bigkoo:alertview:${alert_view_version}"
+
+    //BottomNavigationBar
+    compile "com.ashokvarma.android:bottom-navigation-bar:${bottom_navigation_bar_version}"
 }
 
