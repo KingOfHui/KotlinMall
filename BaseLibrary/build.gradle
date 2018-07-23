@@ -32,14 +32,19 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    api 'com.android.support:appcompat-v7:27.1.1'
-    api 'com.android.support:recyclerview-v7:27.1.1'
     api 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    //AndroidSupport
+    api "com.android.support:cardview-v7:${android_support_version}"
+    api "com.android.support:support-v4:${android_support_version}"
+    api "com.android.support:appcompat-v7:${android_support_version}"
+    api "com.android.support:recyclerview-v7:${android_support_version}"
+    api "com.android.support:design:${android_support_version}"
+    api "com.android.support:cardview-v7:${android_support_version}"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     // Anko Commons
     api "org.jetbrains.anko:anko-commons:$anko_version"
 
@@ -107,6 +112,27 @@ dependencies {
     api "com.bigkoo:alertview:${alert_view_version}"
 
     //BottomNavigationBar
-    compile "com.ashokvarma.android:bottom-navigation-bar:${bottom_navigation_bar_version}"
-}
+    api "com.ashokvarma.android:bottom-navigation-bar:${bottom_navigation_bar_version}"
 
+    //Banner
+    api 'com.youth.banner:banner:1.4.10'  //最新版本
+    //标签
+    api 'com.github.shts:TriangleLabelView:1.1.2'
+    //画廊
+    api 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
+    //MulitStateView
+    api "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
+    //上下拉刷新
+    api 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    //Kotlin Bus
+    api 'com.eightbitlab:rxbus:1.0.2'
+    //FlowLayout
+    api 'com.zhy:flowlayout-lib:1.0.3'
+    //ARouter
+    api "com.alibaba:arouter-api:$arouter_api_version"
+    //BadgeView
+    api 'q.rorbin:badgeview:1.1.2'
+}
+repositories {
+    mavenCentral()
+}

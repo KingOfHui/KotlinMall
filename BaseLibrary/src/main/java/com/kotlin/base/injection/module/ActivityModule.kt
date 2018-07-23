@@ -10,6 +10,6 @@ class ActivityModule(private val activity: Activity) {
     @Provides
     @ActivityScope
     fun provideActivity():Activity{
-        return activity
+        return this.activity
     }
 }

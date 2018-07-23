@@ -31,7 +31,6 @@ class BottomNavBar @JvmOverloads constructor(
                 .setInActiveColorResource(R.color.text_normal)
         mCartBadgeItem= TextBadgeItem()
         cartItem.setBadgeItem(mCartBadgeItem)
-        mCartBadgeItem.setText("10")
 
         //消息
         val messageItem = BottomNavigationItem(R.drawable.btn_nav_msg_press, resources.getString(R.string.nav_bar_msg))

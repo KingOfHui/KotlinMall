@@ -3,8 +3,10 @@ package com.kotlin.base.ext
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.base.rx.BaseSubscriber
+import com.kotlin.base.utils.GlideUtils
 import com.kotlin.base.widgets.DefaultTextWatcher
 import com.trello.rxlifecycle.LifecycleProvider
 import rx.Observable
@@ -39,4 +41,11 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
             btn.isEnabled=method()
         }
     })
+}
+
+/*
+    ImageView加载网络图片
+ */
+fun ImageView.loadUrl(url: String) {
+    GlideUtils.loadUrlImage(context, url, this)
 }
