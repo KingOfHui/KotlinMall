@@ -18,7 +18,16 @@ fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>,lifecycleProvider: L
             .compose(lifecycleProvider.bindToLifecycle())
             .subscribe(subscriber)
 }
-//View的点击事件扩展方法
+
+/*
+    扩展点击事件
+ */
+fun View.onClick(listener:View.OnClickListener):View{
+    setOnClickListener(listener)
+    return this
+}
+
+//View的点击事件扩展方法，参数为方法
 fun View.onClick(method: () -> Unit) {
     this.setOnClickListener { method() }
 }

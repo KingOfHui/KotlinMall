@@ -21,6 +21,8 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.kotlin.provider.router.RouterPath
 import com.kotlin.usercenter.R
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
@@ -28,6 +30,7 @@ import java.util.*
 /**
  * A login screen that offers login via email/password.
  */
+@Route(path = RouterPath.UserCenter.PATH_LOGIN)
 class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.

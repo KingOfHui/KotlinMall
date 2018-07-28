@@ -1,12 +1,6 @@
-if (isUserModule.toBoolean()) {
-    apply plugin: 'com.android.library'
-} else {
-    apply plugin: 'com.android.application'
-
-}
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 kapt {
@@ -17,6 +11,7 @@ kapt {
 
 android {
     compileSdkVersion 27
+
 
 
     defaultConfig {
@@ -36,33 +31,21 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            if (isUserModule.toBoolean()) {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
-                //release模式下排除debug文件夹中的所有java文件
-                java {
-                    exclude 'debug/**'
-                }
-            } else {
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
-            }
-        }
-    }
-}
-kapt {
-    generateStubs = true
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
-    api project(':Provider')
-    kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+
+    implementation project(':Provider')
+
+    //Dagger2
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     //ARouter
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
+    implementation 'ren.qinc.numberbutton:numberbutton:0.0.1'
 }
